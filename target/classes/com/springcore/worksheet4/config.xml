@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:p="http://www.springframework.org/schema/p"
+ xmlns:c="http://www.springframework.org/schema/c"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!-- 4(a). setter injection on address, constructor on students and autowiring by type on college class -->
+<!-- 	
+ <bean class="com.springcore.worksheet4.Address" name="add">
+ 	<property name="street" value="10" />
+ 	<property name="city" value="New Delhi" />
+ 	<property name="pincode" value="110018" />
+ </bean>
+ 
+ <bean class="com.springcore.worksheet4.Student" name="student">
+ 	<constructor-arg value="Divesh Kumar" />
+ 	<constructor-arg value="24" />
+ 	<constructor-arg value="1" />
+ 	<constructor-arg ref="add" />
+ </bean>
+ 
+ <bean class="com.springcore.worksheet4.College" name="college" autowire="byType" />
+ --> 	
+ <context:annotation-config/>
+ <!-- 4.(b) constructor injection with c schema on address, setter injection with p schema on students and autowiring by name on college class -->
+ <bean class="com.springcore.worksheet4.Address" name="add" c:street="10" c:city="New Delhi" c:pincode="110018" />
+ <bean class="com.springcore.worksheet4.Student" name="student" p:name="Divesh Kumar" p:age="24" p:shift="1" p:address-ref="add" />
+ <bean class="com.springcore.worksheet4.College" name="studentList" autowire="byName" />
+ 
+ </beans>
